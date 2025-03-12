@@ -1,0 +1,261 @@
+{
+  "pages": [
+    //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+    // 身份选择
+    {
+      "path": "pages/login/chooseIdentity",
+      "style": {
+        "navigationBarTitleText": "心语互动-掌上办公",
+        "enablePullDownRefresh": false
+      }
+    },
+    // 用户登录
+    {
+      "path": "pages/login/index",
+      "style": {
+        "navigationBarTitleText": "心语互动-掌上办公",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/psychologicalEducationWork/index",
+      "style": {
+        "navigationBarTitleText": "心语互动",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/guardianshipWarning/index",
+      "style": {
+        "navigationBarTitleText": "心语互动",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/studentFiles/index",
+      "style": {
+        "navigationBarTitleText": "心语互动",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/personalCenter/index",
+      "style": {
+        "navigationBarTitleText": "心语互动",
+        "enablePullDownRefresh": false
+      }
+    }
+  ],
+  // 分包模块
+  "subPackages": [
+    // 测试任务
+    {
+      "root": "testingTasks",
+      "pages": [
+        // 测试任务-测试任务
+        {
+          "path": "index/index",
+          "style": {
+            "navigationBarTitleText": "测试任务",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "publishTasks/index",
+          "style": {
+            "navigationBarTitleText": "发布测试",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "historicalRecords/grade",
+          "style": {
+            "navigationBarTitleText": "历史记录",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "historicalRecords/class",
+          "style": {
+            "navigationBarTitleText": "历史记录",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "historicalRecords/statistics",
+          "style": {
+            "navigationBarTitleText": "历史记录",
+            "enablePullDownRefresh": false
+          }
+        }
+      ]
+    }
+  //   // 风险预警
+  //   {
+  //     "root": "riskWarning",
+  //     "pages": [
+  //       // 风险预警-
+  //       {
+  //         "path": "",
+  //         "style": {
+  //           "navigationBarTitleText": "",
+  //           "enablePullDownRefresh": false
+  //         }
+  //       }
+  //     ]
+  //   },
+  //   // 危机干预
+  //   {
+  //     "root": "crisisIntervention",
+  //     "pages": [
+  //       // 危机干预-
+  //       {
+  //         "path": "",
+  //         "style": {
+  //           "navigationBarTitleText": "",
+  //           "enablePullDownRefresh": false
+  //         }
+  //       }
+  //     ]
+  //   },
+  //   // 咨询预约
+  //   {
+  //     "root": "consultationAppointment",
+  //     "pages": [
+  //       // 咨询预约-
+  //       {
+  //         "path": "",
+  //         "style": {
+  //           "navigationBarTitleText": "",
+  //           "enablePullDownRefresh": false
+  //         }
+  //       }
+  //     ]
+  //   },
+  //   // 月度评价
+  //   {
+  //     "root": "monthlyEvaluation",
+  //     "pages": [
+  //       // 月度评价-
+  //       {
+  //         "path": "",
+  //         "style": {
+  //           "navigationBarTitleText": "",
+  //           "enablePullDownRefresh": false
+  //         }
+  //       }
+  //     ]
+  //   },
+  //   // 量表管理
+  //   {
+  //     "root": "scaleManagement",
+  //     "pages": [
+  //       // 量表管理-
+  //       {
+  //         "path": "",
+  //         "style": {
+  //           "navigationBarTitleText": "",
+  //           "enablePullDownRefresh": false
+  //         }
+  //       }
+  //     ]
+  //   },
+  //   // 手环管理
+  //   {
+  //     "root": "braceletManagement",
+  //     "pages": [
+  //       // 手环管理-
+  //       {
+  //         "path": "",
+  //         "style": {
+  //           "navigationBarTitleText": "",
+  //           "enablePullDownRefresh": false
+  //         }
+  //       }
+  //     ]
+  //   },
+  //   // 账号管理
+  //   {
+  //     "root": "accountManagement",
+  //     "pages": [
+  //       // 账号管理-
+  //       {
+  //         "path": "",
+  //         "style": {
+  //           "navigationBarTitleText": "",
+  //           "enablePullDownRefresh": false
+  //         }
+  //       }
+  //     ]
+  //   },
+  //   // 回收站
+  //   {
+  //     "root": "recycleBin",
+  //     "pages": [
+  //       // 回收站-
+  //       {
+  //         "path": "",
+  //         "style": {
+  //           "navigationBarTitleText": "",
+  //           "enablePullDownRefresh": false
+  //         }
+  //       }
+  //     ]
+  //   },
+  //   // 问题反馈
+  //   {
+  //     "root": "problemFeedback",
+  //     "pages": [
+  //       // 问题反馈-
+  //       {
+  //         "path": "",
+  //         "style": {
+  //           "navigationBarTitleText": "",
+  //           "enablePullDownRefresh": false
+  //         }
+  //       }
+  //     ]
+  //   }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#818181", //字体颜色
+    "selectedColor": "#3D7CFD", //选中时字体颜色
+    "borderStyle": "black", //底部的上边框线条
+    "backgroundColor": "#FFFFFF", //底部背景色
+    "fontSize": "11px", //字体大小
+    "spacing": "4px", //字体到图标的距离
+    "height": "60px", //底部高
+    "list": [
+      {
+        "text": "心育工作",
+        "pagePath": "pages/psychologicalEducationWork/index",
+        "iconPath": "static/images/psychologicalEducationWorkInactive.png",
+        "selectedIconPath": "static/images/psychologicalEducationWorkActive.png"
+      },
+      {
+        "text": "监护预警",
+        "pagePath": "pages/guardianshipWarning/index",
+        "iconPath": "static/images/guardianshipWarningInactive.png",
+        "selectedIconPath": "static/images/guardianshipWarningActive.png"
+      },
+      {
+        "text": "学生档案",
+        "pagePath": "pages/studentFiles/index",
+        "iconPath": "static/images/studentFilesInactive.png",
+        "selectedIconPath": "static/images/studentFilesActive.png"
+      },
+      {
+        "text": "个人中心",
+        "pagePath": "pages/personalCenter/index",
+        "iconPath": "static/images/personalCenterInactive.png",
+        "selectedIconPath": "static/images/personalCenterActive.png"
+      }
+    ]
+  }
+}
