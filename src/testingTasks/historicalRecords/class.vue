@@ -26,10 +26,72 @@
           <view class="title">数据统计：初一</view>
           <view class="peopleNum">共 39 人</view>
         </view>
-        <view class="checkStatics">查看统计</view>
+        <view class="checkStatics" @click="viewStatistics">查看统计</view>
       </view>
       <view class="staffList">
-
+        <view class="staffItem">
+          <view class="top">
+            <view class="userName">孙亚莉</view>
+            <view class="right">
+              <view class="status">已完成</view>
+              <view class="editIcon"></view>
+            </view>
+          </view>
+          <view class="divider"></view>
+          <view class="bottom">
+            <view class="row">
+              <view class="label">测试时间：</view>
+              <view class="value">
+                <view class="text">2023/01/01</view>
+                <view class="result">12:55 ~ 13:34</view>
+              </view>
+            </view>
+            <view class="row">
+              <view class="label">无效量表：</view>
+              <view class="value">
+                <view class="text">《EPQ》</view>
+                <view class="result">信效度低</view>
+              </view>
+            </view>
+            <view class="scaleBox">
+              <view class="scaleResult">
+                <view class="scaleName">艾森克人格问卷-EPQ（7-15岁）</view>
+                <view class="scaleContent img"></view>
+              </view>
+              <view class="scaleResult">
+                <view class="scaleName">MHT</view>
+                <view class="scaleContent chart"></view>
+              </view>
+              <view class="scaleResult">
+                <view class="scaleName">阿森斯失眠量表</view>
+                <view class="scaleContent text">可疑失眠</view>
+              </view>
+              <view class="scaleResult">
+                <view class="scaleName">阿森斯失眠量表</view>
+                <view class="scaleContent text">可疑失眠</view>
+              </view>
+            </view>
+            <view class="operateBox">
+              <u-button :custom-style="btnCustomNo">导出报告</u-button>
+              <u-button :custom-style="btnCustom">查看详情</u-button>
+            </view>
+          </view>
+        </view>
+        <view class="staffItem">
+          <view class="top">
+            <view class="userName">孙亚莉</view>
+            <view class="right">
+              <view class="status">已完成</view>
+              <view class="editIcon"></view>
+            </view>
+          </view>
+          <view class="divider"></view>
+          <view class="bottom">
+            <view class="scaleBox">
+              <view class="none">暂无测试数据</view>
+            </view>
+          </view>
+        </view>
       </view>
     </view>
   </view>
@@ -64,6 +126,12 @@ const taskStatusList = ref([
     value: 3,
   },
 ])
+// 查看作答情况跳转
+const viewStatistics = (index) => {
+  uni.navigateTo({
+    url: '/testingTasks/historicalRecords/statistics',
+  })
+}
 </script>
 
 <style lang="scss" scoped>
@@ -172,6 +240,7 @@ const taskStatusList = ref([
         color: #4297fe;
         line-height: 56rpx;
         text-align: center;
+        cursor: pointer;
       }
     }
     .staffList {
@@ -185,122 +254,164 @@ const taskStatusList = ref([
       }
       .staffItem {
         width: 100%;
-        height: 626rpx;
+        max-height: 626rpx;
         background-color: #ffffff;
+        padding: 24rpx;
+        box-sizing: border-box;
+        margin-bottom: 24rpx;
+        &:last-child {
+          margin-bottom: 0rpx;
+        }
         .top {
           width: 100%;
-          height: 110rpx;
-          padding: 0rpx 32rpx;
-          box-sizing: border-box;
+          height: 80rpx;
           display: flex;
           align-items: center;
           justify-content: space-between;
-          .left {
-            display: flex;
-            align-items: center;
-            .status {
-              width: 116rpx;
-              height: 48rpx;
-              border-radius: 8rpx;
-              font-family: PingFang SC, PingFang SC;
-              font-weight: 400;
-              font-size: 28rpx;
-              line-height: 48rpx;
-              text-align: center;
-              margin-right: 16rpx;
-            }
-            .className {
-              font-family: PingFang SC, PingFang SC;
-              font-size: 32rpx;
-              color: #000000;
-              display: flex;
-              align-items: center;
-              .gradeName {
-                font-weight: 400;
-              }
-              .className {
-                font-weight: bold;
-              }
-            }
+          .userName {
+            font-family: PingFang SC, PingFang SC;
+            font-weight: bold;
+            font-size: 32rpx;
+            color: #434343;
           }
           .right {
             display: flex;
             align-items: center;
-            .icon {
-              width: 34rpx;
-              height: 34rpx;
-              margin-right: 8rpx;
-            }
-            .peopleNum {
+            .status {
+              padding: 8rpx 16rpx;
+              box-sizing: border-box;
+              border-radius: 8rpx;
+              margin-right: 16rpx;
               font-family: PingFang SC, PingFang SC;
               font-weight: 400;
-              font-size: 32rpx;
-              color: #000000;
+              font-size: 28rpx;
+            }
+            .editIcon {
+              width: 40rpx;
+              height: 40rpx;
+              cursor: pointer;
             }
           }
         }
         .divider {
           width: 100%;
           height: 4rpx;
-          background-color: #f4f5f7;
+          background-color: #e5e5e5;
+          margin: 16rpx 0rpx;
         }
         .bottom {
           width: 100%;
-          height: 102rpx;
-          padding: 0rpx 32rpx;
-          box-sizing: border-box;
           display: flex;
-          align-items: center;
-          justify-content: space-between;
-          .progressBox {
-            width: calc(100% - 208rpx);
+          flex-direction: column;
+          .row {
+            width: 100%;
+            height: 32rpx;
             display: flex;
             align-items: center;
-            .text {
+            justify-content: space-between;
+            margin-bottom: 16rpx;
+            .label {
+              height: 32rpx;
               font-family: PingFang SC, PingFang SC;
               font-weight: 400;
-              font-size: 32rpx;
-              color: #000000;
-              margin-right: 32rpx;
+              font-size: 26rpx;
+              color: #818181;
+              line-height: 32rpx;
             }
-            .progressBar {
-              width: calc(100% - 244rpx);
-              height: 20rpx;
-              position: relative;
-              margin-right: 32rpx;
-              :deep(.u-progress) {
-                position: absolute;
-                bottom: 50%;
-                transform: translateY(50%);
-                .u-active {
-                  border-radius: 8rpx;
+            .value {
+              display: flex;
+              align-items: center;
+              .text {
+                height: 32rpx;
+                font-family: PingFang SC, PingFang SC;
+                font-weight: 400;
+                font-size: 26rpx;
+                color: #818181;
+                line-height: 32rpx;
+                margin-right: 16rpx;
+              }
+              .result {
+                height: 32rpx;
+                font-family: PingFang SC, PingFang SC;
+                font-weight: 400;
+                font-size: 26rpx;
+                color: #000000;
+                line-height: 32rpx;
+              }
+            }
+          }
+          .scaleBox {
+            width: 100%;
+            padding: 16rpx;
+            box-sizing: border-box;
+            background-color: #f9f9f9;
+            margin-bottom: 16rpx;
+            display: flex;
+            align-items: center;
+            overflow-x: scroll;
+
+            .scaleResult {
+              width: 192rpx;
+              height: 240rpx;
+              display: flex;
+              flex-direction: column;
+              margin-right: 48rpx;
+              &:last-child {
+                margin-right: 0rpx;
+              }
+              .scaleName {
+                width: 192rpx;
+                height: 32rpx;
+                font-family: PingFang SC, PingFang SC;
+                font-weight: 400;
+                font-size: 24rpx;
+                color: #434343;
+                line-height: 32rpx;
+                text-align: center;
+                margin-bottom: 16rpx;
+                white-space: nowrap; /* 不换行 */
+                overflow: hidden; /* 隐藏超出的内容 */
+                text-overflow: ellipsis; /* 用省略号表示被隐藏的部分 */
+              }
+              .scaleContent {
+                width: 192rpx;
+                height: calc(100% - 48rpx);
+                &.img {
+                }
+                &.chart {
+                }
+                &.text {
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font-family: PingFang SC, PingFang SC;
+                  font-weight: 400;
+                  font-size: 24rpx;
+                  color: #434343;
                 }
               }
             }
-            .num {
-              width: 52rpx;
-              height: 44rpx;
+            .none {
+              width: 100%;
+              height: 80rpx;
+              text-align: center;
+              line-height: 80rpx;
               font-family: PingFang SC, PingFang SC;
               font-weight: 400;
-              font-size: 32rpx;
+              font-size: 26rpx;
               color: #818181;
-              line-height: 38rpx;
-              text-align: left;
-              font-style: normal;
-              text-transform: none;
             }
           }
-          .checkDetails {
-            width: 176rpx;
-            height: 56rpx;
-            background: #3d7cfd;
-            border-radius: 46rpx;
-            font-family: PingFang SC, PingFang SC;
-            font-weight: 500;
-            font-size: 28rpx;
-            color: #ffffff;
-            line-height: 56rpx;
-            text-align: center;
+          .operateBox {
+            width: 100%;
+            height: 80rpx;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 16rpx;
+            :deep(.u-btn) {
+              width: 100%;
+              height: 100% !important;
+            }
           }
         }
       }

@@ -24,7 +24,7 @@
         <view class="icon"></view>
         <view class="information">
           <view class="title">数据统计：初一</view>
-          <view class="class">共 13 班</view>
+          <view class="classNum">共 13 班</view>
         </view>
         <view class="checkStatics">查看统计</view>
       </view>

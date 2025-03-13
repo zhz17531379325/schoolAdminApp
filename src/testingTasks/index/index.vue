@@ -1,21 +1,6 @@
 <template>
   <view class="testingTasks">
     <commonComponentSwitching v-model="tabActive" :tabs="tabs">
-      <view class="publish" v-if="tabActive === 'publish'">
-        <image
-          class="publishIcon"
-          :src="getImgUrl('/testingTasks/publishIcon.png')"
-        ></image>
-        <view class="prompt">
-          <view>测试任务在此发布</view>
-          <view>发布成功后学生可登录网站进行测试</view>
-        </view>
-        <view class="createTestButton">
-          <u-button :custom-style="btnCustom" @click="createTest"
-            >创建测试</u-button
-          >
-        </view>
-      </view>
       <view class="historicalRecords" v-if="tabActive === 'historicalRecords'">
         <view class="tabs">
           <u-tabs
@@ -179,16 +164,31 @@
           </view>
         </view>
       </view>
+      <view class="publish" v-if="tabActive === 'publish'">
+        <image
+          class="publishIcon"
+          :src="getImgUrl('/testingTasks/publishIcon.png')"
+        ></image>
+        <view class="prompt">
+          <view>测试任务在此发布</view>
+          <view>发布成功后学生可登录网站进行测试</view>
+        </view>
+        <view class="createTestButton">
+          <u-button :custom-style="btnCustom" @click="createTest"
+            >创建测试</u-button
+          >
+        </view>
+      </view>
     </commonComponentSwitching>
   </view>
 </template>
 
 <script setup name="testingTasks">
 import { onLoad } from '@dcloudio/uni-app'
-const tabActive = ref('publish')
+const tabActive = ref('historicalRecords')
 const tabs = ref([
-  { title: '发布测试任务', component: 'publish' },
   { title: '历史记录', component: 'historicalRecords' },
+  { title: '发布测试任务', component: 'publish' },
 ])
 
 const currentTab = ref(0)
@@ -772,6 +772,171 @@ function capitalizeFirstLetter(string) {
   overflow: scroll;
   padding: 16rpx 16rpx 0rpx 16rpx;
   box-sizing: border-box;
+  .historicalRecordsList {
+    width: 100%;
+    height: calc(100% - 114rpx);
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    .historicalRecordsItem {
+      width: 100%;
+      padding: 32rpx;
+      box-sizing: border-box;
+      margin-bottom: 24rpx;
+      border-radius: 16rpx;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      .top {
+        width: 100%;
+        .status {
+          padding-left: 16rpx;
+          height: 32rpx;
+          font-family: PingFang SC, PingFang SC;
+          font-weight: 400;
+          font-size: 28rpx;
+          color: #3d7cfd;
+          line-height: 32rpx;
+          margin-bottom: 32rpx;
+        }
+        .title {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          margin-bottom: 32rpx;
+          .iconBox {
+            height: 48rpx;
+            display: flex;
+            align-items: center;
+            .icon {
+              width: 48rpx;
+              height: 48rpx;
+              margin-right: 8rpx;
+              &:last-child {
+                margin-right: 0;
+              }
+            }
+          }
+          .text {
+            height: 48rpx;
+            font-family: PingFang SC, PingFang SC;
+            font-weight: bold;
+            font-size: 32rpx;
+            color: #434343;
+            line-height: 48rpx;
+          }
+        }
+        .introduce {
+          width: 100%;
+          font-family: PingFang SC, PingFang SC;
+          font-weight: 400;
+          font-size: 26rpx;
+          color: #434343;
+          line-height: 48rpx;
+        }
+      }
+      .divider {
+        width: 100%;
+        height: 2rpx;
+        background-color: #e5e5e5;
+        margin: 32rpx 0rpx;
+      }
+      .information {
+        width: 100%;
+        padding: 8rpx 0rpx;
+        box-sizing: border-box;
+        margin-bottom: 32rpx;
+        .row {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          margin-bottom: 16rpx;
+          &:last-child {
+            margin-bottom: 0;
+          }
+          .label {
+            width: 182rpx;
+            height: 32rpx;
+            font-family: PingFang SC, PingFang SC;
+            font-weight: 400;
+            font-size: 26rpx;
+            color: #818181;
+            line-height: 32rpx;
+            text-align: right;
+          }
+          .value {
+            width: calc(100% - 198rpx);
+            min-height: 32rpx;
+            font-family: PingFang SC, PingFang SC;
+            font-weight: 400;
+            font-size: 26rpx;
+            color: #000000;
+            &.grade {
+              font-weight: bold;
+              display: flex;
+              flex-wrap: wrap;
+            }
+            &.scaleList {
+              display: flex;
+              align-items: flex-start;
+              flex-wrap: wrap;
+              .scaleItem {
+                display: flex;
+                align-items: center;
+                .scaleName {
+                  font-family: PingFang SC, PingFang SC;
+                  font-weight: 400;
+                  font-size: 26rpx;
+                  color: #3d7cfd;
+                  cursor: pointer;
+                  white-space: nowrap;
+                }
+                .splitters {
+                  width: 1px;
+                  height: 18px;
+                  background-color: #818181;
+                  margin: 0 8px;
+                }
+                .scaleNum {
+                  font-family: PingFang SC, PingFang SC;
+                  font-weight: 400;
+                  font-size: 16px;
+                  color: #000000;
+                  white-space: nowrap;
+                }
+                &:last-child {
+                  margin-right: 8px;
+                }
+              }
+            }
+            .edit {
+              width: 18px;
+              height: 18px;
+              margin-left: 12px;
+              cursor: pointer;
+            }
+          }
+          &.power {
+            display: flex;
+            align-items: flex-start;
+            .value {
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;
+            }
+          }
+        }
+      }
+      .bottom {
+        :deep(.u-btn) {
+          margin-bottom: 16rpx !important;
+          &:last-child {
+            margin-bottom: 0rpx;
+          }
+        }
+      }
+    }
+  }
   .publish {
     width: 100%;
     height: 100%;
@@ -823,171 +988,6 @@ function capitalizeFirstLetter(string) {
         height: 100%;
         .u-tab-item {
           height: 74rpx !important;
-        }
-      }
-    }
-    .historicalRecordsList {
-      width: 100%;
-      height: calc(100% - 114rpx);
-      display: flex;
-      flex-direction: column;
-      overflow: scroll;
-      .historicalRecordsItem {
-        width: 100%;
-        padding: 32rpx;
-        box-sizing: border-box;
-        margin-bottom: 24rpx;
-        border-radius: 16rpx;
-        &:last-child {
-          margin-bottom: 0;
-        }
-        .top {
-          width: 100%;
-          .status {
-            padding-left: 16rpx;
-            height: 32rpx;
-            font-family: PingFang SC, PingFang SC;
-            font-weight: 400;
-            font-size: 28rpx;
-            color: #3d7cfd;
-            line-height: 32rpx;
-            margin-bottom: 32rpx;
-          }
-          .title {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            margin-bottom: 32rpx;
-            .iconBox {
-              height: 48rpx;
-              display: flex;
-              align-items: center;
-              .icon {
-                width: 48rpx;
-                height: 48rpx;
-                margin-right: 8rpx;
-                &:last-child {
-                  margin-right: 0;
-                }
-              }
-            }
-            .text {
-              height: 48rpx;
-              font-family: PingFang SC, PingFang SC;
-              font-weight: bold;
-              font-size: 32rpx;
-              color: #434343;
-              line-height: 48rpx;
-            }
-          }
-          .introduce {
-            width: 100%;
-            font-family: PingFang SC, PingFang SC;
-            font-weight: 400;
-            font-size: 26rpx;
-            color: #434343;
-            line-height: 48rpx;
-          }
-        }
-        .divider {
-          width: 100%;
-          height: 2rpx;
-          background-color: #e5e5e5;
-          margin: 32rpx 0rpx;
-        }
-        .information {
-          width: 100%;
-          padding: 8rpx 0rpx;
-          box-sizing: border-box;
-          margin-bottom: 32rpx;
-          .row {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            margin-bottom: 16rpx;
-            &:last-child {
-              margin-bottom: 0;
-            }
-            .label {
-              width: 182rpx;
-              height: 32rpx;
-              font-family: PingFang SC, PingFang SC;
-              font-weight: 400;
-              font-size: 26rpx;
-              color: #818181;
-              line-height: 32rpx;
-              text-align: right;
-            }
-            .value {
-              width: calc(100% - 198rpx);
-              min-height: 32rpx;
-              font-family: PingFang SC, PingFang SC;
-              font-weight: 400;
-              font-size: 26rpx;
-              color: #000000;
-              &.grade {
-                font-weight: bold;
-                display: flex;
-                flex-wrap: wrap;
-              }
-              &.scaleList {
-                display: flex;
-                align-items: flex-start;
-                flex-wrap: wrap;
-                .scaleItem {
-                  display: flex;
-                  align-items: center;
-                  .scaleName {
-                    font-family: PingFang SC, PingFang SC;
-                    font-weight: 400;
-                    font-size: 26rpx;
-                    color: #3d7cfd;
-                    cursor: pointer;
-                    white-space: nowrap;
-                  }
-                  .splitters {
-                    width: 1px;
-                    height: 18px;
-                    background-color: #818181;
-                    margin: 0 8px;
-                  }
-                  .scaleNum {
-                    font-family: PingFang SC, PingFang SC;
-                    font-weight: 400;
-                    font-size: 16px;
-                    color: #000000;
-                    white-space: nowrap;
-                  }
-                  &:last-child {
-                    margin-right: 8px;
-                  }
-                }
-              }
-              .edit {
-                width: 18px;
-                height: 18px;
-                margin-left: 12px;
-                cursor: pointer;
-              }
-            }
-            &.power {
-              display: flex;
-              align-items: flex-start;
-              .value {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-              }
-            }
-          }
-        }
-        .bottom {
-          :deep(.u-btn) {
-            margin-bottom: 16rpx !important;
-            &:last-child {
-              margin-bottom: 0rpx;
-            }
-          }
         }
       }
     }
