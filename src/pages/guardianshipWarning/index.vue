@@ -1,5 +1,12 @@
 <template>
-  <view class="guardianshipWarning"> </view>
+  <view class="guardianshipWarning">
+    <barChart />
+    <pieChart />
+    <radarChart />
+    <textBarChart />
+    <multiLayerRadarChart />
+    <lineChart />
+  </view>
 </template>
 
 <script setup name="guardianshipWarning">

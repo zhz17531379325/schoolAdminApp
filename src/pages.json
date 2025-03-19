@@ -89,133 +89,171 @@
           }
         }
       ]
+    },
+    //   // 风险预警
+    //   {
+    //     "root": "riskWarning",
+    //     "pages": [
+    //       // 风险预警-
+    //       {
+    //         "path": "",
+    //         "style": {
+    //           "navigationBarTitleText": "",
+    //           "enablePullDownRefresh": false
+    //         }
+    //       }
+    //     ]
+    //   },
+    //   // 危机干预
+    //   {
+    //     "root": "crisisIntervention",
+    //     "pages": [
+    //       // 危机干预-
+    //       {
+    //         "path": "",
+    //         "style": {
+    //           "navigationBarTitleText": "",
+    //           "enablePullDownRefresh": false
+    //         }
+    //       }
+    //     ]
+    //   },
+    //   // 咨询预约
+    //   {
+    //     "root": "consultationAppointment",
+    //     "pages": [
+    //       // 咨询预约-
+    //       {
+    //         "path": "",
+    //         "style": {
+    //           "navigationBarTitleText": "",
+    //           "enablePullDownRefresh": false
+    //         }
+    //       }
+    //     ]
+    //   },
+    //   // 月度评价
+    //   {
+    //     "root": "monthlyEvaluation",
+    //     "pages": [
+    //       // 月度评价-
+    //       {
+    //         "path": "",
+    //         "style": {
+    //           "navigationBarTitleText": "",
+    //           "enablePullDownRefresh": false
+    //         }
+    //       }
+    //     ]
+    //   },
+    //   // 量表管理
+    //   {
+    //     "root": "scaleManagement",
+    //     "pages": [
+    //       // 量表管理-
+    //       {
+    //         "path": "",
+    //         "style": {
+    //           "navigationBarTitleText": "",
+    //           "enablePullDownRefresh": false
+    //         }
+    //       }
+    //     ]
+    //   },
+    //   // 手环管理
+    //   {
+    //     "root": "braceletManagement",
+    //     "pages": [
+    //       // 手环管理-
+    //       {
+    //         "path": "",
+    //         "style": {
+    //           "navigationBarTitleText": "",
+    //           "enablePullDownRefresh": false
+    //         }
+    //       }
+    //     ]
+    //   },
+    //   // 账号管理
+    //   {
+    //     "root": "accountManagement",
+    //     "pages": [
+    //       // 账号管理-
+    //       {
+    //         "path": "",
+    //         "style": {
+    //           "navigationBarTitleText": "",
+    //           "enablePullDownRefresh": false
+    //         }
+    //       }
+    //     ]
+    //   },
+    //   // 回收站
+    //   {
+    //     "root": "recycleBin",
+    //     "pages": [
+    //       // 回收站-
+    //       {
+    //         "path": "",
+    //         "style": {
+    //           "navigationBarTitleText": "",
+    //           "enablePullDownRefresh": false
+    //         }
+    //       }
+    //     ]
+    //   },
+    //   // 问题反馈
+    //   {
+    //     "root": "problemFeedback",
+    //     "pages": [
+    //       // 问题反馈-
+    //       {
+    //         "path": "",
+    //         "style": {
+    //           "navigationBarTitleText": "",
+    //           "enablePullDownRefresh": false
+    //         }
+    //       }
+    //     ]
+    //   }
+    // 管理：量表管理、手环管理、账号管理
+    {
+      "root": "management",
+      "pages": [
+        // 量表管理
+        {
+          "path": "scaleManagement/index",
+          "style": {
+            "navigationBarTitleText": "",
+            "enablePullDownRefresh": false
+          }
+        },
+        // 手环管理
+        {
+          "path": "braceletManagement/index",
+          "style": {
+            "navigationBarTitleText": "手环管理",
+            "enablePullDownRefresh": false
+          }
+        },
+        // 账号管理
+        {
+          "path": "accountManagement/index",
+          "style": {
+            "navigationBarTitleText": "账号管理",
+            "enablePullDownRefresh": false
+          }
+        },
+        // 账号管理-编辑
+        {
+          "path": "accountManagement/accountEdit",
+          "style": {
+            "navigationBarTitleText": "账号管理",
+            "enablePullDownRefresh": false
+          }
+        }
+      ]
     }
-  //   // 风险预警
-  //   {
-  //     "root": "riskWarning",
-  //     "pages": [
-  //       // 风险预警-
-  //       {
-  //         "path": "",
-  //         "style": {
-  //           "navigationBarTitleText": "",
-  //           "enablePullDownRefresh": false
-  //         }
-  //       }
-  //     ]
-  //   },
-  //   // 危机干预
-  //   {
-  //     "root": "crisisIntervention",
-  //     "pages": [
-  //       // 危机干预-
-  //       {
-  //         "path": "",
-  //         "style": {
-  //           "navigationBarTitleText": "",
-  //           "enablePullDownRefresh": false
-  //         }
-  //       }
-  //     ]
-  //   },
-  //   // 咨询预约
-  //   {
-  //     "root": "consultationAppointment",
-  //     "pages": [
-  //       // 咨询预约-
-  //       {
-  //         "path": "",
-  //         "style": {
-  //           "navigationBarTitleText": "",
-  //           "enablePullDownRefresh": false
-  //         }
-  //       }
-  //     ]
-  //   },
-  //   // 月度评价
-  //   {
-  //     "root": "monthlyEvaluation",
-  //     "pages": [
-  //       // 月度评价-
-  //       {
-  //         "path": "",
-  //         "style": {
-  //           "navigationBarTitleText": "",
-  //           "enablePullDownRefresh": false
-  //         }
-  //       }
-  //     ]
-  //   },
-  //   // 量表管理
-  //   {
-  //     "root": "scaleManagement",
-  //     "pages": [
-  //       // 量表管理-
-  //       {
-  //         "path": "",
-  //         "style": {
-  //           "navigationBarTitleText": "",
-  //           "enablePullDownRefresh": false
-  //         }
-  //       }
-  //     ]
-  //   },
-  //   // 手环管理
-  //   {
-  //     "root": "braceletManagement",
-  //     "pages": [
-  //       // 手环管理-
-  //       {
-  //         "path": "",
-  //         "style": {
-  //           "navigationBarTitleText": "",
-  //           "enablePullDownRefresh": false
-  //         }
-  //       }
-  //     ]
-  //   },
-  //   // 账号管理
-  //   {
-  //     "root": "accountManagement",
-  //     "pages": [
-  //       // 账号管理-
-  //       {
-  //         "path": "",
-  //         "style": {
-  //           "navigationBarTitleText": "",
-  //           "enablePullDownRefresh": false
-  //         }
-  //       }
-  //     ]
-  //   },
-  //   // 回收站
-  //   {
-  //     "root": "recycleBin",
-  //     "pages": [
-  //       // 回收站-
-  //       {
-  //         "path": "",
-  //         "style": {
-  //           "navigationBarTitleText": "",
-  //           "enablePullDownRefresh": false
-  //         }
-  //       }
-  //     ]
-  //   },
-  //   // 问题反馈
-  //   {
-  //     "root": "problemFeedback",
-  //     "pages": [
-  //       // 问题反馈-
-  //       {
-  //         "path": "",
-  //         "style": {
-  //           "navigationBarTitleText": "",
-  //           "enablePullDownRefresh": false
-  //         }
-  //       }
-  //     ]
-  //   }
   ],
   "globalStyle": {
     "navigationBarTextStyle": "black",

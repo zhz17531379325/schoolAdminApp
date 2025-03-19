@@ -93,7 +93,17 @@
       </commonPanel>
     </view>
     <view class="consultationWorkload">
-      <commonPanel :title="'咨询工作量'"></commonPanel>
+      <commonPanel :title="'咨询工作量'">
+        <circularDiagramLegend
+          :chartsId="`ConsultationWorkload`"
+          :data="crisisLevelStatisticsData"
+          :colorList="['#E5E5E5', '#33C397', '#FBD466', '#FE9C00', '#F2647C']"
+          :isNum="true"
+          v-show="
+            crisisLevelStatisticsData && crisisLevelStatisticsData.length > 0
+          "
+        />
+      </commonPanel>
     </view>
     <view class="dataStatisticalAnalysis">
       <commonComponentSwitching
@@ -112,7 +122,7 @@
           <view class="riskDimensionRanking chartBox">
             <view class="title">风险维度排行</view>
             <view class="chart rankingList">
-              <view class="rankingItem" v-for="(item, index) in 5">
+              <view class="rankingItem" v-for="(item, index) in 5" :key="index">
                 <view class="information">
                   <view class="left">
                     <view class="index">
@@ -141,7 +151,7 @@
             <view class="title">初筛风险结果</view>
             <view class="chart">
               <circularDiagramLegend
-                :chartsId="`studentRiskStatistics_crisisLevelStatistics`"
+                :chartsId="`InitialScreeningRisk`"
                 :data="crisisLevelStatisticsData"
                 :colorList="[
                   '#E5E5E5',
@@ -151,7 +161,7 @@
                   '#F2647C',
                 ]"
                 :isNum="true"
-                v-if="
+                v-show="
                   crisisLevelStatisticsData &&
                   crisisLevelStatisticsData.length > 0
                 "
@@ -162,7 +172,7 @@
             <view class="title">危机评估结果</view>
             <view class="chart">
               <circularDiagramLegend
-                :chartsId="`studentRiskStatistics_crisisLevelStatistics`"
+                :chartsId="`CrisisAssessment`"
                 :data="crisisLevelStatisticsData"
                 :colorList="[
                   '#E5E5E5',
@@ -172,7 +182,7 @@
                   '#F2647C',
                 ]"
                 :isNum="true"
-                v-if="
+                v-show="
                   crisisLevelStatisticsData &&
                   crisisLevelStatisticsData.length > 0
                 "
@@ -189,7 +199,7 @@
           <view class="consultingTopicRanking chartBox">
             <view class="title">咨询主题排行</view>
             <view class="chart rankingList">
-              <view class="rankingItem" v-for="(item, index) in 5">
+              <view class="rankingItem" v-for="(item, index) in 5" :key="index">
                 <view class="information">
                   <view class="left">
                     <view class="index">
@@ -216,7 +226,7 @@
           </view>
           <view class="consultationQuantity chartBox">
             <view class="title">咨询学生数量变化</view>
-            <view class="chart"> </view>
+            <view class="chart"><histogramChart /></view>
           </view>
         </view>
       </commonComponentSwitching>
@@ -249,14 +259,17 @@ const menuList = ref([
   {
     value: 'scaleManagement',
     label: '量表管理',
+    type: 'management',
   },
   {
     value: 'braceletManagement',
     label: '手环管理',
+    type: 'management',
   },
   {
     value: 'accountManagement',
     label: '账号管理',
+    type: 'management',
   },
   {
     value: 'recycleBin',
@@ -301,9 +314,15 @@ const crisisLevelStatisticsData = ref([
 ])
 // 菜单跳转
 const menuJump = (item) => {
-  uni.navigateTo({
-    url: `/${item.value}/index/index`,
-  })
+  if (item.type && item.type === 'management') {
+    uni.navigateTo({
+      url: `/management/${item.value}/index`,
+    })
+  } else {
+    uni.navigateTo({
+      url: `/${item.value}/index/index`,
+    })
+  }
 }
 </script>
 
@@ -627,6 +646,12 @@ const menuJump = (item) => {
       }
       .consultationQuantity {
         height: 474rpx;
+        .title {
+          margin-bottom: 0rpx;
+        }
+        .chart {
+          height: calc(100% - 36rpx);
+        }
       }
     }
   }

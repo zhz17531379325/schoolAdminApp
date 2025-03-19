@@ -2,7 +2,18 @@
   <view class="circularDiagramLegend" :class="arrangement">
     <view class="left">
       <!-- 图表容器 -->
-      <view :id="chartsId" class="charts"></view>
+      <view class="charts-box">
+        <qiun-data-charts
+          type="ring"
+          :opts="opts"
+          :chartData="chartData"
+          :canvas2d="false"
+          :canvasId="`WRWktZiUiMkqWRrZECNFeXRBEpGJUWKUCircularDiagramLegend${chartsId}`"
+          :tooltipShow="false"
+          @complete="complete"
+          @error="error"
+        />
+      </view>
     </view>
     <view class="right">
       <view class="legendList">
@@ -24,7 +35,6 @@
 
 <script setup name="circularDiagramLegend">
 // 引入 echarts 组件
-import * as echarts from 'echarts'
 const props = defineProps({
   // 绑定的ID
   chartsId: {
@@ -74,13 +84,98 @@ const props = defineProps({
     type: String,
     require: true,
     default: () => {
-      return '136px'
+      return '200rpx'
     },
   },
 })
-// 创建实例容器
-const myChart = ref(null)
-const chartsData = ref([])
+const chartData = ref({})
+const opts = reactive({
+  timing: 'easeOut',
+  duration: 1000,
+  rotate: false,
+  rotateLock: false,
+  color: props.colorList,
+  padding: [0, 0, 0, 0],
+  fontSize: 13,
+  fontColor: '#666666',
+  dataLabel: false,
+  dataPointShape: false,
+  dataPointShapeType: 'solid',
+  touchMoveLimit: 60,
+  enableScroll: false,
+  enableMarkLine: false,
+  background: 'rgba(0,0,0,0)',
+  legend: {
+    show: false,
+    position: 'right',
+    lineHeight: 25,
+    float: 'center',
+    padding: 5,
+    margin: 5,
+    backgroundColor: 'rgba(0,0,0,0)',
+    borderColor: 'rgba(0,0,0,0)',
+    borderWidth: 0,
+    fontSize: 13,
+    fontColor: '#666666',
+    hiddenColor: '#CECECE',
+    itemGap: 10,
+  },
+  title: {
+    name: '共 212 人',
+    fontSize: 13,
+    color: '#000000',
+    offsetX: 0,
+    offsetY: 0,
+  },
+  subtitle: {
+    name: '',
+    color: '#7cb5ec',
+    offsetX: 0,
+    offsetY: 0,
+  },
+  extra: {
+    ring: {
+      ringWidth: 8,
+      activeOpacity: 0.5,
+      activeRadius: 10,
+      offsetAngle: 0,
+      labelWidth: 15,
+      border: false,
+      borderWidth: 3,
+      borderColor: '#FFFFFF',
+      centerColor: '#FFFFFF',
+      customRadius: 0,
+      linearType: 'none',
+    },
+    tooltip: {
+      showBox: false,
+      showArrow: false,
+      showCategory: false,
+      borderWidth: 0,
+      borderRadius: 0,
+      borderColor: '#000000',
+      borderOpacity: 0.7,
+      bgColor: '#000000',
+      bgOpacity: 0.7,
+      gridType: 'solid',
+      dashLength: 4,
+      gridColor: '#CCCCCC',
+      boxPadding: 3,
+      fontSize: 13,
+      lineHeight: 20,
+      fontColor: '#FFFFFF',
+      legendShow: false,
+      legendShape: 'auto',
+      splitLine: false,
+      horizentalLine: false,
+      xAxisLabel: false,
+      yAxisLabel: false,
+      labelBgColor: '#FFFFFF',
+      labelBgOpacity: 0.7,
+      labelFontColor: '#666666',
+    },
+  },
+})
 const chartsSize = ref(props.chartsSize)
 const dataTotal = computed(() => {
   return props.data.reduce((total, item) => total + item.value, 0)
@@ -89,87 +184,42 @@ function countPercentage(num) {
   return num > 0 ? ((num / dataTotal.value) * 100).toFixed(0) : 0
 }
 onMounted(() => {
-  setTimeout(() => {
-    initCharts()
-  }, 500)
+  getServerData()
 })
-watch(
-  () => props.data,
-  (val) => {
-    if (myChart.value) {
-      myChart.value.dispose() // 销毁实例
-      myChart.value = null
-    }
-    initCharts()
-  },
-  {
-    deep: true,
-  }
-)
-function initCharts() {
-  myChart.value = markRaw(echarts.init(document.getElementById(props.chartsId)))
-  if (props.data && props.data.length > 0) {
-    chartsData.value = props.data.map((item) => {
-      return {
-        ...item,
-        percentage: ((item.value / dataTotal.value) * 100).toFixed(0),
-      }
-    })
-  }
-  const option = {
-    color: dataTotal.value === 0 ? '#d3d3d3' : props.colorList,
-    tooltip: {
-      trigger: 'item',
-    },
-    toolbox: {
-      show: true,
-    },
-    legend: {
-      show: false,
-    },
-    series: [
-      {
-        name: props.defaultText,
-        type: 'pie',
-        radius: ['80%', '95%'],
-        center: ['50%', '50%'],
-        silent: dataTotal.value === 0,
-        label: {
-          show: true,
-          position: 'center',
-          avoidLabelOverlap: false,
-          color: '#000000',
-          fontSize: 16,
-          fontWeight: '400',
-          fontFamily: 'PingFang SC, PingFang SC',
-          formatter: `${props.risk ? `{risk|${props.risk}}\n` : ''}共 {num|${
-            dataTotal.value
-          }} 人`,
-          lineHeight: props.risk ? 30 : 0,
-          rich: {
-            risk: {
-              fontSize: 20,
-              fontWeight: '800',
-            },
-            num: {
-              fontSize: 20,
-            },
-          },
+// watch(
+//   () => props.data,
+//   (val) => {
+//     if (myChart.value) {
+//       myChart.value.dispose() // 销毁实例
+//       myChart.value = null
+//     }
+//     initCharts()
+//   },
+//   {
+//     deep: true,
+//   }
+// )
+watchEffect(() => {})
+function getServerData() {
+  // 模拟从服务器获取数据时的延时
+  setTimeout(() => {
+    const res = {
+      series: [
+        {
+          data: props.data,
         },
-        labelLine: {
-          show: true,
-        },
-        data: chartsData.value,
-      },
-    ],
-  }
-  // 使用刚指定的配置项和数据显示图表。
-  myChart.value.setOption(option)
-  window.addEventListener('resize', () => {
-    if (myChart.value) {
-      myChart.value.resize()
+      ],
     }
-  })
+    chartData.value = JSON.parse(JSON.stringify(res))
+  }, 500)
+}
+
+function complete(e) {
+  console.log(e)
+}
+
+function error(e) {
+  console.log(e)
 }
 </script>
 
@@ -194,7 +244,7 @@ function initCharts() {
     display: flex;
     align-items: center;
     justify-content: center;
-    .charts {
+    .charts-box {
       width: 100%;
       height: 100%;
     }
