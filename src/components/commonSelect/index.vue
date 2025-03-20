@@ -39,8 +39,6 @@ const handleSelect = (selectedItem) => {
   height: 100%;
   display: flex;
   align-items: center;
-  position: relative;
-  margin-bottom: 15px;
 }
 .select-box {
   display: flex;

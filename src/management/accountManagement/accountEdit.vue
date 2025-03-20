@@ -38,6 +38,9 @@
         /></u-form-item>
       </u-form>
     </view>
+    <view class="submitButton">
+      <u-button :custom-style="btnCustom" @click="handleLogin">确定</u-button>
+    </view>
   </view>
 </template>
 
@@ -132,6 +135,7 @@ onMounted(() => {
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding: 14rpx 32rpx 64rpx 32rpx;
   box-sizing: border-box;
   :deep(.u-form) {
@@ -168,11 +172,11 @@ onMounted(() => {
           .u-form-item--right__content {
             height: 100%;
             .u-form-item--right__content__slot {
+              width: 100%;
               height: 100%;
               display: flex;
               align-items: center;
-              .roleBox,
-              .genderBox {
+              :deep(.commonSelect) {
                 width: 100%;
                 height: 100%;
               }

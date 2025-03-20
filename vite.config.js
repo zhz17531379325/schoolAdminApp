@@ -15,7 +15,7 @@ export default defineConfig(({
 		VITE_APP_ENV
 	} = env
 	return {
-		base: VITE_APP_ENV === "production" ? "/partysHistory-h5/" : "./",
+		base: VITE_APP_ENV === "production" ? "/schoolAdminApp/" : "./",
 		server: {
 			port: 3000,
 			host: true,

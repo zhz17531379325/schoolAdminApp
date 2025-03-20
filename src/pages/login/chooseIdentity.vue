@@ -2,7 +2,7 @@
   <view class="chooseIdentity">
     <view class="title"> 请选择您的角色 </view>
     <view class="roleList">
-      <div
+      <view
         class="roleItem"
         v-for="item in roleList"
         :key="item.value"
@@ -13,8 +13,8 @@
           class="icon"
           :src="getImgUrl(`/login/${item.value}.png`)"
         ></image>
-        <div class="text">{{ item.label }}</div>
-      </div>
+        <view class="text">{{ item.label }}</view>
+      </view>
     </view>
   </view>
 </template>

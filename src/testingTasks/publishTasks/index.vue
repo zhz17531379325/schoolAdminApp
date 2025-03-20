@@ -40,7 +40,7 @@
           <view class="top">
             <view class="label">已选班级</view>
             <view class="modify">
-              <div class="text">修改</div>
+              <view class="text">修改</view>
               <image
                 class="modifyIcon"
                 :src="getImgUrl('/testingTasks/modify.png')"
@@ -92,27 +92,27 @@
         <view class="selectTestScale">
           <view class="top">
             <view class="label">选择测试量表：</view>
-            <div class="prompt">(请按作答顺序点击)</div>
+            <view class="prompt">(请按作答顺序点击)</view>
           </view>
         </view>
       </view>
       <!-- 时间设置 -->
       <view class="timeSetting parameter" v-if="currentStep === 2">
-        <div class="row">
+        <view class="row">
           <view class="label">测试有效期：</view>
           <view class="calendar" @click="showDate = true">
-            <div class="date">{{ publishTasksForm.startTime }}</div>
-            <div class="connect">-</div>
-            <div class="date">{{ publishTasksForm.deadLine }}</div>
+            <view class="date">{{ publishTasksForm.startTime }}</view>
+            <view class="connect">-</view>
+            <view class="date">{{ publishTasksForm.deadLine }}</view>
             <u-calendar
               v-model="showDate"
               mode="range"
               @change="dateChange"
             ></u-calendar>
           </view>
-          <div class="pour">注：有效期外学生端不显示测试内容</div>
-        </div>
-        <div class="row">
+          <view class="pour">注：有效期外学生端不显示测试内容</view>
+        </view>
+        <view class="row">
           <view class="label">答题时间：</view>
           <view class="tab">
             <tabs
@@ -136,7 +136,7 @@
               </u-form-item>
             </view>
           </view>
-        </div>
+        </view>
       </view>
       <!-- 权限设置 -->
       <view class="permissionSettings parameter" v-if="currentStep === 3">

@@ -224,7 +224,15 @@
         {
           "path": "scaleManagement/index",
           "style": {
-            "navigationBarTitleText": "",
+            "navigationBarTitleText": "量表管理",
+            "enablePullDownRefresh": false
+          }
+        },
+        // 量表管理-预览
+        {
+          "path": "scaleManagement/subpage/scalePreview",
+          "style": {
+            "navigationBarTitleText": "量表预览",
             "enablePullDownRefresh": false
           }
         },
@@ -256,6 +264,7 @@
     }
   ],
   "globalStyle": {
+    // "navigationStyle": "custom",
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "uni-app",
     "navigationBarBackgroundColor": "#F8F8F8",

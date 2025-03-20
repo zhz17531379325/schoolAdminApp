@@ -1,6 +1,6 @@
 <template>
-  <div class="commonTab">
-    <div
+  <view class="commonTab">
+    <view
       class="tabs"
       v-for="(item, index) in tabList"
       :key="index"
@@ -8,8 +8,8 @@
       @click="handleTab(item)"
     >
       {{ item.label }}
-    </div>
-  </div>
+    </view>
+  </view>
 </template>
 
 <script setup name="commonTab">

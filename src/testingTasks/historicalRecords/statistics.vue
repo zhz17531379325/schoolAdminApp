@@ -3,21 +3,21 @@
     <view class="header">
       <view class="source">数据统计：初一/1班</view>
       <view class="testInformation">
-        <div class="row">
-          <div class="label">总人数</div>
-          <div class="value">45人</div>
-        </div>
-        <div class="row">
-          <div class="label">已完成</div>
-          <div class="value">16人</div>
-        </div>
-        <div class="row">
-          <div class="label">测试异常</div>
-          <div class="value abnormal">
-            <div class="num">2人</div>
-            <div class="check">查看 ></div>
-          </div>
-        </div>
+        <view class="row">
+          <view class="label">总人数</view>
+          <view class="value">45人</view>
+        </view>
+        <view class="row">
+          <view class="label">已完成</view>
+          <view class="value">16人</view>
+        </view>
+        <view class="row">
+          <view class="label">测试异常</view>
+          <view class="value abnormal">
+            <view class="num">2人</view>
+            <view class="check">查看 ></view>
+          </view>
+        </view>
       </view>
     </view>
 

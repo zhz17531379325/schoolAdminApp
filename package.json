@@ -51,8 +51,7 @@
     "@dcloudio/uni-quickapp-webview": "3.0.0-alpha-3060420220922001",
     "vue": "^3.2.37",
     "vue-i18n": "^9.1.9",
-    "vuex": "^4.0.2",
-    "echarts": "5.3.2"
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@dcloudio/types": "^3.0.13",
